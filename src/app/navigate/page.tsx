@@ -1,10 +1,20 @@
 'use client';
 import Link from "next/link";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
+    const[scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+           setScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    })
 
     const navItems = [
         { name: "Home", href: "/" },
@@ -14,8 +24,8 @@ export default function NavBar() {
     ];
 
     return (
-        <nav className="bg-gray-900 text-white shadow-lg sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-gradient-to-r from-green-700 to-black text-white" : "bg-transparent text-black"}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <motion.div

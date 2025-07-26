@@ -29,7 +29,7 @@ export default function Home() {
                     }}
                     className="origin-center"
                 >
-                    <h1 className="text-[250px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-teal-400 text-center">
+                    <h1 className="text-[250px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-black text-center">
                         Welcome to Watch Hub
                     </h1>
                 </motion.div>
