@@ -1,9 +1,9 @@
 'use client';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import HomeDecription from "../homeDescription/page";
+import GalleryCollection from "../galleryCollection/page";
 
-export default function Home() {
+export default function Gallery() {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -31,11 +31,11 @@ export default function Home() {
                     className="origin-center"
                 >
                     <h1 className="text-[250px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-black text-center">
-                        Welcome to Watch Hub
+                        GALLERY
                     </h1>
                 </motion.div>
             </div>
-                      <HomeDecription/>
+                      <GalleryCollection/>
             
         </section>
     );
