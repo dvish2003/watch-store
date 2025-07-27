@@ -23,7 +23,12 @@ export default function NavBar() {
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
         { name: "Gallery", href: "/gallery" },
-        { name: "Contact", href: "/contact" }
+        { name: "Contact", href: "/contact" },
+        { name: "Login", href: "/login" },
+        { name: "Register", href: "/register" }
+        // Add more items as needed 
+
+
     ];
 
     return (

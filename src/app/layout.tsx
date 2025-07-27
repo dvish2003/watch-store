@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono,Ubuntu } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/app/navigate/page";
+import NavBar from "@/component/navigate/page";
 
 const ubuntu = Ubuntu({
     variable: "--font-ubuntu",

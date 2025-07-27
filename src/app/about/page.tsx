@@ -1,7 +1,7 @@
 'use client'
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import AboutDescription from "../aboutDescription/page";
+import AboutDescription from "./aboutDescription/page";
 
 
 export default function About() {

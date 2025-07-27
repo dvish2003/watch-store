@@ -1,7 +1,7 @@
 'use client'
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import ContactDescription from "../contactDescription/page";
+import ContactDescription from "./contactDescription/page";
 
 
 export default function Contact() {

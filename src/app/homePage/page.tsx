@@ -1,7 +1,7 @@
 'use client';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import HomeDecription from "../homeDescription/page";
+import HomeDecription from "./homeDescription/page";
 
 export default function Home() {
     const containerRef = useRef(null);
