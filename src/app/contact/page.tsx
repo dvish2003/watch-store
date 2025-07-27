@@ -1,10 +1,10 @@
 'use client'
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import AboutDescription from "../aboutDescription/page";
+import ContactDescription from "../contactDescription/page";
 
 
-export default function About() {
+export default function Contact() {
    const containerRef = useRef(null);
       const { scrollYProgress } = useScroll({
           target: containerRef,
@@ -32,11 +32,12 @@ export default function About() {
                     className="origin-center"
                 >
                     <h1 className="text-[250px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-black text-center">
-                        About US
+                        Contact 
                     </h1>
                 </motion.div>
             </div>
-        <AboutDescription/>
+                  <ContactDescription/>
+
     </section>
   );
 }

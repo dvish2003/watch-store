@@ -20,7 +20,6 @@ export default function HomeDescription() {
                 }}
             />
 
-            {/* Content container */}
             <div className='relative z-10 h-full flex flex-col justify-between p-8 md:p-12 lg:p-16 text-white'>
                 {/* Top content */}
                 <motion.div
@@ -44,19 +43,17 @@ export default function HomeDescription() {
                     </motion.button>
                 </motion.div>
 
-                {/* Middle content */}
                 <motion.div
                     className='text-center'
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
                 >
-                    <h2 className='text-2xl md:text-3xl lg:text-4xl font-light italic'>
+                    <h2 className='text-2xl md:text-3xl lg:text-4xl font-light bg-gradient-to-bl from-white to-green-600 bg-clip-text text-transparent'>
                         Designed for collectors. <span className='font-bold'>Engineered for visionaries.</span> Crafted without limits.
                     </h2>
                 </motion.div>
 
-                {/* Bottom content */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

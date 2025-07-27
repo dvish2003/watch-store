@@ -5,6 +5,9 @@ import HomeDecription from "./homeDescription/page";
 import AboutDescription from "@/app/aboutDescription/page";
 import Gallery from "@/app/gallery/page";
 import GalleryCollection from "@/app/galleryCollection/page";
+import Contact from "@/app/contact/page";
+import ContactDescription from "@/app/contactDescription/page";
+import Footer from "./footer/page";
 
 export default function page() {
   return (
@@ -12,11 +15,11 @@ export default function page() {
       {/*set component*/}
 
           <Home/>
-          <HomeDecription/>
           <About/>
-          <AboutDescription/>
           <Gallery/>
-          <GalleryCollection/>
+          <Contact/> 
+          <Footer/>
+          {/* <Footer/> */}
       </>
   );
 }

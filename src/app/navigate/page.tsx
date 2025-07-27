@@ -2,10 +2,13 @@
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const[scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,35 +27,39 @@ export default function NavBar() {
     ];
 
     return (
-        <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-gradient-to-r from-green-700 to-black text-white" : "bg-transparent text-black"}`}>
+        <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md text-black" : "bg-transparent text-black"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <motion.div
                         whileHover={{ scale: 1.05 }}
-                        className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+                        className="text-2xl font-bold bg-gradient-to-r from-green-500 to-black bg-clip-text text-transparent"
                     >
                         <Link href="/">WATCH HUB</Link>
                     </motion.div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex space-x-8">
-                        {navItems.map((item) => (
-                            <motion.div
-                                key={item.name}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <Link
-                                    href={item.href}
-                                    className="relative px-3 py-2 text-sm font-medium group"
-                                >
-                                    <span className="relative z-10">{item.name}</span>
-                                    <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out opacity-0 group-hover:opacity-100"></span>
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </div>
+                  <div className="hidden md:flex space-x-8">
+  {navItems.map((item) => (
+    <motion.div
+      key={item.name}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+   <Link
+  href={item.href}
+  className={`relative px-3 py-2 text-sm font-medium text-black
+    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px]
+    after:bg-emerald-400 after:transition-all after:duration-300
+    ${pathname === item.href ? 'after:w-full' : 'after:w-0 hover:after:w-full'}
+  `}
+>
+        {item.name}
+      </Link>
+    </motion.div>
+  ))}
+</div>
+
 
                     {/* Mobile menu button */}
                     <div className="md:hidden flex items-center">
@@ -97,11 +104,15 @@ export default function NavBar() {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    <Link
-                                        href={item.href}
-                                        className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700 transition duration-300"
-                                        onClick={() => setIsOpen(false)}
-                                    >
+                                   <Link
+  href={item.href}
+  className={`relative px-3 py-2 text-sm font-medium text-white
+    after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px]
+    after:bg-emerald-400 after:transition-all after:duration-300
+    ${pathname === item.href ? 'after:w-full' : 'after:w-0 hover:after:w-full'}
+  `}
+  onClick={() => setIsOpen(false)}
+>
                                         {item.name}
                                     </Link>
                                 </motion.div>

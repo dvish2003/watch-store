@@ -1,6 +1,7 @@
 'use client';
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import GalleryCollection from "../galleryCollection/page";
 
 export default function Gallery() {
     const containerRef = useRef(null);
@@ -34,6 +35,8 @@ export default function Gallery() {
                     </h1>
                 </motion.div>
             </div>
+                      <GalleryCollection/>
+            
         </section>
     );
 }
