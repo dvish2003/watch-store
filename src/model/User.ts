@@ -12,3 +12,8 @@ export type userFormData = {
     password: string;
     confirmPassword: string;
 }
+
+export type loginUserFormData = {
+    email: string;
+    password: string;
+}
