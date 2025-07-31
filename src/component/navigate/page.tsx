@@ -1,14 +1,38 @@
 'use client';
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { getAuth, removeToken, setAuth } from "@/util/cookies";
+
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const[scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
+    const isAuth =  getAuth() === 'true' ? true : false;
+    const router = useRouter();
+  
 
+
+   const navItems = [
+    
+            { name: "Home", href: "/" },
+            { name: "About", href: "/about" },
+            { name: "Gallery", href: "/gallery" },
+            { name: "Contact", href: "/contact" },
+            { name: "Login", href: "/login" },
+            { name: "Register", href: "/register" }
+
+   ]
+
+   const handleLogOut = () =>{
+    setAuth(false);
+         router.push('/');
+     removeToken();
+   }
+  
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,17 +43,6 @@ export default function NavBar() {
         return () => window.removeEventListener("scroll", handleScroll);
     })
 
-    const navItems = [
-        { name: "Home", href: "/" },
-        { name: "About", href: "/about" },
-        { name: "Gallery", href: "/gallery" },
-        { name: "Contact", href: "/contact" },
-        { name: "Login", href: "/login" },
-        { name: "Register", href: "/register" }
-        // Add more items as needed 
-
-
-    ];
 
     return (
         <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md text-black" : "bg-transparent text-black"}`}>
@@ -45,7 +58,8 @@ export default function NavBar() {
 
                     {/* Desktop Navigation */}
                   <div className="hidden md:flex space-x-8">
-  {navItems.map((item) => (
+                    {!isAuth && (
+ navItems.map((item) => (
     <motion.div
       key={item.name}
       whileHover={{ scale: 1.05 }}
@@ -61,8 +75,17 @@ export default function NavBar() {
 >
         {item.name}
       </Link>
-    </motion.div>
-  ))}
+    </motion.div>))
+                    )}
+
+
+ 
+
+     {isAuth && (  
+       <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-300" onClick={handleLogOut}>
+        Logout
+      </button>)}
+     
 </div>
 
 
@@ -103,7 +126,7 @@ export default function NavBar() {
                         className="md:hidden bg-gray-800 overflow-hidden"
                     >
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            {navItems.map((item) => (
+                            {!isAuth &&  navItems.map((item) => (
                                 <motion.div
                                     key={item.name}
                                     whileHover={{ scale: 1.02 }}
@@ -122,6 +145,12 @@ export default function NavBar() {
                                     </Link>
                                 </motion.div>
                             ))}
+                            <button className="
+                            px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-300
+                            " onClick={handleLogOut}>
+                                Logout
+                            </button>
+                            
                         </div>
                     </motion.div>
                 )}

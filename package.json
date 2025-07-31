@@ -6,12 +6,15 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prod": "NODE_ENV=production next start"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.11.0",
     "framer-motion": "^12.23.9",
+    "js-cookie": "^3.0.5",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.525.0",
     "next": "15.4.3",
     "react": "19.1.0",
@@ -20,14 +23,17 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.7.1",
     "sweetalert2": "^11.22.2",
-    "sweetalert2-react-content": "^5.1.0"
+    "sweetalert2-react-content": "^5.1.0",
+    "zustand": "^5.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
     "tailwindcss": "^4",

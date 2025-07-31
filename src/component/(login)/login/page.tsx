@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { login } from '@/api/userService';
 import { useRouter } from 'next/navigation';
+import { getToken, setAuth, setToken } from '@/util/cookies';
+import { decodeToken } from '@/util/tokenDecorde';
 
 const MySwal = withReactContent(Swal);
 
@@ -87,10 +89,11 @@ const router =  useRouter();
     const response = await login(userFormData);
     if(response.status == 200){
       showSuccessAlert("Login Successful", "You have successfully logged in.");
-      localStorage.setItem('token', response.message);
-      localStorage.setItem('email', userFormData.email);
-      localStorage.setItem('isAuth', 'true');
-      localStorage.setItem('role', response.role);
+      setToken(response.message)
+      const decode = decodeToken(response.message);
+      // localStorage.setItem('email', userFormData.email);
+      setAuth(true);
+      // localStorage.setItem('role', response.role);
       router.push('/mainPage');
     };
     if(response.status == 400){
@@ -140,7 +143,7 @@ const router =  useRouter();
             Login
           </button>
             <p className="text-center mt-4">
-                Don't have an account? <Link href="/register" className="text-blue-500">Register here</Link>
+                Don&apos;t forget to sign in <Link href="/register" className="text-blue-500">Register here</Link>
             </p>
             <p className="text-center mt-4">
                 <Link href="/forgot-password" className="text-blue-500">Forgot Password?</Link>

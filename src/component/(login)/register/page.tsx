@@ -59,7 +59,7 @@ export default function RegisterPage() {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target;void
         setUserForm({
             ...userForm,
             [name]: value

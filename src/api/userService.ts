@@ -1,5 +1,5 @@
 import { userFormData } from "@/model/User";
-import {apiClient_1, apiClient_2} from "../api/apiClient";
+import {apiClient_1, apiClient_2} from "../lib/apiClient";
 import { loginUserFormData } from "@/model/User";
 
 export const saveUser = async(user:userFormData) =>{

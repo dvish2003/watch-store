@@ -20,7 +20,7 @@ export default function ContactDescription() {
         </h1>
         <p className="text-gray-300 text-lg mb-8">
           We value your feedback and inquiries. Whether you have questions about our collection,
-          need assistance, or want to share your thoughts, we're here to help. Fill out the form
+          need assistance, or want to share your thoughts, We&apos;re here to help. Fill out the form
           and our team will get back to you soon.
         </p>
 
