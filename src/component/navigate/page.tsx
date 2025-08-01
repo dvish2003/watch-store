@@ -4,18 +4,21 @@ import React, {useEffect, useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { getAuth, removeToken, setAuth } from "@/util/cookies";
+import {removeToken, setAuth } from "@/util/cookies";
+import { useAuthStore } from "@/store/useAuthStore";
+import { authHandle } from "@/store/authHandle/authHandle";
 
 
 export default function NavBar() {
+    const { isLoggedIn } = useAuthStore();
     const [isOpen, setIsOpen] = useState(false);
     const[scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
-    const isAuth =  getAuth() === 'true' ? true : false;
-    const router = useRouter();
-  
-
-
+    const isAuth = "true" 
+    // const router = useRouter();
+    // const isAuth = authHandle();
+    
+   
    const navItems = [
     
             { name: "Home", href: "/" },
@@ -27,9 +30,11 @@ export default function NavBar() {
 
    ]
 
+
+
    const handleLogOut = () =>{
     setAuth(false);
-         router.push('/');
+    // router.push('/');
      removeToken();
    }
   
@@ -37,7 +42,8 @@ export default function NavBar() {
     useEffect(() => {
         const handleScroll = () => {
            setScrolled(window.scrollY > 50);
-        };
+        };react navite code for connect iphone to ubuntu pc 
+        
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -58,7 +64,7 @@ export default function NavBar() {
 
                     {/* Desktop Navigation */}
                   <div className="hidden md:flex space-x-8">
-                    {!isAuth && (
+                    { (
  navItems.map((item) => (
     <motion.div
       key={item.name}
@@ -81,7 +87,7 @@ export default function NavBar() {
 
  
 
-     {isAuth && (  
+     {isAuth === 'true' && (  
        <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-300" onClick={handleLogOut}>
         Logout
       </button>)}
@@ -126,7 +132,7 @@ export default function NavBar() {
                         className="md:hidden bg-gray-800 overflow-hidden"
                     >
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            {!isAuth &&  navItems.map((item) => (
+                            {navItems.map((item) => (
                                 <motion.div
                                     key={item.name}
                                     whileHover={{ scale: 1.02 }}

@@ -1,7 +1,7 @@
-import Home from "@/component/homePage/page";
-import About from "@/component/about/page";
-import Gallery from "@/component/gallery/page";
-import Contact from "@/component/contact/page";
+import Home from "@/app/homePage/page";
+import About from "@/app/about/page";
+import Gallery from "@/app/gallery/page";
+import Contact from "@/app/contact/page";
 import Footer from "../component/footer/page";
 
 

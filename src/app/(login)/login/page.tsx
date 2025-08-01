@@ -8,10 +8,12 @@ import { login } from '@/api/userService';
 import { useRouter } from 'next/navigation';
 import { getToken, setAuth, setToken } from '@/util/cookies';
 import { decodeToken } from '@/util/tokenDecorde';
+import { useAuthStore } from '@/store/useAuthStore';
 
 const MySwal = withReactContent(Swal);
 
 export default function LoginPage() {
+
   const[userFormData, setUserFormData] = React.useState<loginUserFormData>({email: '', password: ''})
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +24,8 @@ export default function LoginPage() {
     }));
   };
 const router =  useRouter();
+  const { log } = useAuthStore();
+
 
  const showErrorAlert = (title: string, html: string) => {
         return MySwal.fire({
@@ -91,10 +95,10 @@ const router =  useRouter();
       showSuccessAlert("Login Successful", "You have successfully logged in.");
       setToken(response.message)
       const decode = decodeToken(response.message);
-      // localStorage.setItem('email', userFormData.email);
       setAuth(true);
-      // localStorage.setItem('role', response.role);
+      log();
       router.push('/mainPage');
+
     };
     if(response.status == 400){
       showErrorAlert("Login Failed", "Invalid email or password.");
