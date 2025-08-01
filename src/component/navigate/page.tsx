@@ -42,7 +42,7 @@ export default function NavBar() {
     useEffect(() => {
         const handleScroll = () => {
            setScrolled(window.scrollY > 50);
-        };react navite code for connect iphone to ubuntu pc 
+        };
         
 
         window.addEventListener("scroll", handleScroll);
