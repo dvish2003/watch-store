@@ -3,21 +3,15 @@ import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 import {removeToken, setAuth } from "@/util/cookies";
-import { useAuthStore } from "@/store/useAuthStore";
-import { authHandle } from "@/store/authHandle/authHandle";
 
 
 export default function NavBar() {
-    const { isLoggedIn } = useAuthStore();
     const [isOpen, setIsOpen] = useState(false);
     const[scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
     const isAuth = "true" 
-    // const router = useRouter();
-    // const isAuth = authHandle();
-    
+
    
    const navItems = [
     

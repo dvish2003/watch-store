@@ -2,23 +2,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import HomeDecription from "./homeDescription/page";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { authHandle } from "@/store/authHandle/authHandle";
-
 export default function Home() {
-    // const router = useRouter();
-    // const isAuth = authHandle();
-
-
-    // useEffect(() => {
-    //     if (isAuth === 'true') {
-    //         router.push('/mainPage');
-    //     }else {
-    //         router.push('/homePage');
-    //     }
-    // }, [isAuth, router]);
-
+    
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,

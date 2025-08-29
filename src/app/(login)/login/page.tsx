@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { login } from '@/api/userService';
 import { useRouter } from 'next/navigation';
-import { getToken, setAuth, setToken } from '@/util/cookies';
-import { decodeToken } from '@/util/tokenDecorde';
+import {setAuth, setToken } from '@/util/cookies';
 import { useAuthStore } from '@/store/useAuthStore';
 
 const MySwal = withReactContent(Swal);
@@ -94,7 +93,6 @@ const router =  useRouter();
     if(response.status == 200){
       showSuccessAlert("Login Successful", "You have successfully logged in.");
       setToken(response.message)
-      const decode = decodeToken(response.message);
       setAuth(true);
       log();
       router.push('/mainPage');
